@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://djwpj8jngqi1c"]
+
+[ext_resource type="PackedScene" uid="uid://dt7udltiqjlk3" path="res://bowl_2.tscn" id="2_1gb4d"]
+[ext_resource type="PackedScene" uid="uid://dcs43utebtxp6" path="res://ball.tscn" id="2_2mayw"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_oh5q6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ce3r4"]
+albedo_color = Color(0.538865, 0.351812, 0.0891573, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mkuri"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[node name="stim2" type="Node3D"]
+
+[node name="floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.30238, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor"]
+transform = Transform3D(40, 0, 0, 0, 0.069, 0, 0, 0, 40, 0, -1.12713, 0)
+mesh = SubResource("BoxMesh_oh5q6")
+surface_material_override/0 = SubResource("StandardMaterial3D_ce3r4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor"]
+transform = Transform3D(40, 0, 0, 0, 0.069, 0, 0, 0, 40, 0, -1.12713, 0)
+shape = SubResource("ConvexPolygonShape3D_mkuri")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.283781, 0.958889, 0, -0.958889, 0.283781, 0, 4.27055, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 5.57254e-08, -6.73604e-08, 0, 0.770513, 0.637424, 8.74228e-08, 0.637424, -0.770513, 0, 1.4689, -4.08101)
+
+[node name="ball" parent="." instance=ExtResource("2_2mayw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.606)
+
+[node name="bowl2" parent="." instance=ExtResource("2_1gb4d")]
+transform = Transform3D(0.07, 0, 0, 0, -3.0598e-09, 0.07, 0, -0.07, -3.0598e-09, 0, -0.866064, 0)
